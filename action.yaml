@@ -1,0 +1,20 @@
+name: ChatGPT Content Suggestions
+description: "Content suggestion for github made with ChatGPT"
+# branding:
+#   icon: "gift"
+#   color: orange
+runs:
+  using: "node16"
+  main: "dist/action.js"
+
+inputs:
+  OPENAI_API_KEY:
+    description: "OpenAI API Key"
+    required: true
+  GITHUB_TOKEN:
+    description: "GitHub Token"
+    default: ${{ github.token }}
+  TOP_P:
+    description: "Top P"
+  TEMPERATURE:
+    description: "Temperature"
