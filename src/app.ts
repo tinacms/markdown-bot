@@ -5,6 +5,10 @@ import { parseGithubComment } from "./util/parseGithubComment";
 import { Settings } from "./settings";
 
 export const app = (app: Probot) => {
+  app.onError((error) => {
+    console.log("Unhandled error occurred");
+    console.log(error);
+  });
   app.on(["issue_comment.created", "issue_comment.edited"], async (context) => {
     console.log("Issue comment created");
     console.log("context.payload", context.payload);
@@ -44,6 +48,8 @@ export const app = (app: Probot) => {
       repo: context.payload.repository.name,
       pull_number: issueNumber,
     });
+
+    console.log("pull_request", pull_request);
 
     const head = pull_request.data.head.sha;
     const base = pull_request.data.base.sha;
@@ -102,9 +108,12 @@ export const app = (app: Probot) => {
       );
       return;
     }
+    console.log("changedFiles", changedFiles);
+    console.log("files", files);
 
     for (let i = 0; i < changedFiles.length; i++) {
       const f = changedFiles[i];
+      console.log("f", f);
       if (files.includes(f.filename)) {
         const file = await context.octokit.repos.getContent({
           owner,
