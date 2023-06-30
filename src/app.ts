@@ -6,11 +6,8 @@ import { Settings } from "./settings";
 
 export const app = (app: Probot) => {
   app.on(["issue_comment.created", "issue_comment.edited"], async (context) => {
-    const settings = Settings.getInstance();
-    if (!settings.defaultsSet) {
-      settings.setDefaults({});
-    }
-
+    console.log("Issue comment created");
+    console.log("context.payload", context.payload);
     if (context.isBot) {
       console.log("Ignoring bot comment");
       return;
@@ -25,6 +22,10 @@ export const app = (app: Probot) => {
         `Issue ${issueNumber} is not a pull request. Ignoring comment`
       );
       return;
+    }
+    const settings = Settings.getInstance();
+    if (!settings.defaultsSet) {
+      settings.setDefaults({});
     }
     const files = parseGithubComment(issueComment);
     if (!files) {
