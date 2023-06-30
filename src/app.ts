@@ -52,7 +52,10 @@ export const app = (app: Probot) => {
       fileName: string;
     }) => {
       const res = await ai.makeSuggestions({ content, patch });
-      if (res.error) return;
+      if (res.error) {
+        console.log("Error making suggestions");
+        return;
+      }
       const suggestions = res.suggestions;
 
       const comments = suggestions.map((suggestion) => ({
@@ -80,7 +83,12 @@ export const app = (app: Probot) => {
     });
     let { files: changedFiles } = data.data;
 
-    if (!changedFiles) return;
+    if (!changedFiles) {
+      console.log(
+        `No changed files found in Pull request ${issueNumber}. Comparing ${base} to ${head}`
+      );
+      return;
+    }
 
     for (let i = 0; i < changedFiles.length; i++) {
       const f = changedFiles[i];
@@ -94,7 +102,12 @@ export const app = (app: Probot) => {
         // @ts-ignore
         const content = Buffer.from(file.data.content, "base64").toString();
         const patch = f.patch;
-        if (!patch) return;
+        if (!patch) {
+          console.log(
+            `No patch found for file ${f.filename} in PR ${issueNumber}`
+          );
+          return;
+        }
         try {
           await makeSuggestionsAndPR({ content, patch, fileName: f.filename });
         } catch (e) {

@@ -5,7 +5,7 @@
  * the unique singleton instance.
  */
 
-const DEFAULT_MODEL = "gpt-3.5-turbo";
+const DEFAULT_MODEL = "gpt-3.5-turbo-0613";
 const DEFAULT_TEMPERATURE = 1;
 const DEFAULT_TOP_P = 1;
 export class Settings {
