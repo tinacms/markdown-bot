@@ -11,26 +11,38 @@ export const app = (app: Probot) => {
       settings.setDefaults({});
     }
 
-    if (context.isBot) return;
+    if (context.isBot) {
+      console.log("Ignoring bot comment");
+      return;
+    }
 
     const issueComment = context.payload.comment.body;
     const issueNumber = context.payload.issue.number;
     const isPullrequest = context.payload.issue.pull_request;
 
-    if (!isPullrequest) return;
+    if (!isPullrequest) {
+      console.log(
+        `Issue ${issueNumber} is not a pull request. Ignoring comment`
+      );
+      return;
+    }
     const files = parseGithubComment(issueComment);
-    if (!files) return;
+    if (!files) {
+      console.log(`No files found in comment "${issueComment}"`);
+      return;
+    }
 
     const openAIKey = await getOpenAIKey(context);
-    if (!openAIKey) return;
+    if (!openAIKey) {
+      console.log("No OpenAI key found");
+      return;
+    }
 
-    const pullRequestPromise = context.octokit.rest.pulls.get({
+    const pull_request = await context.octokit.rest.pulls.get({
       owner: context.payload.repository.owner.login,
       repo: context.payload.repository.name,
       pull_number: issueNumber,
     });
-
-    const pull_request = await pullRequestPromise;
 
     const head = pull_request.data.head.sha;
     const base = pull_request.data.base.sha;
