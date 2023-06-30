@@ -38,14 +38,14 @@ describe("parseGithubComment", () => {
     const result3 = parseGithubComment(content3);
     expect(result3).toEqual(["foo/bar/baz.md", "foo.md"]);
   });
-  it("Should always return the file name in lower case", () => {
+  it("Should always keep the case of the filename", () => {
     const content = "ai fix: TEST.md";
     const result = parseGithubComment(content);
-    expect(result).toEqual(["test.md"]);
+    expect(result).toEqual(["TEST.md"]);
 
     const content2 = "This is a test comment ai fix: FOo.md ";
     const result2 = parseGithubComment(content2);
-    expect(result2).toEqual(["foo.md"]);
+    expect(result2).toEqual(["FOo.md"]);
   });
 
   it("Should trim the file names of any whitespace", () => {
@@ -76,5 +76,19 @@ describe("parseGithubComment", () => {
     const content = "ai fix:";
     const result = parseGithubComment(content);
     expect(result).toEqual(false);
+  });
+
+  it("Should work no matter the casing of the prompt", () => {
+    const content = "AI FIX: test.md";
+    const result = parseGithubComment(content);
+    expect(result).toEqual(["test.md"]);
+
+    const content2 = "This is a test comment AI FiX: foo.md ";
+    const result2 = parseGithubComment(content2);
+    expect(result2).toEqual(["foo.md"]);
+
+    const content3 = "This is a test comment ai fix: foo/bar/baz.md";
+    const result3 = parseGithubComment(content3);
+    expect(result3).toEqual(["foo/bar/baz.md"]);
   });
 });
