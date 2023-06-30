@@ -11,7 +11,6 @@ export const app = (app: Probot) => {
   });
   app.on(["issue_comment.created", "issue_comment.edited"], async (context) => {
     console.log("Issue comment created");
-    console.log("context.payload", context.payload);
     if (context.isBot) {
       console.log("Ignoring bot comment");
       return;
@@ -48,8 +47,6 @@ export const app = (app: Probot) => {
       repo: context.payload.repository.name,
       pull_number: issueNumber,
     });
-
-    console.log("pull_request", pull_request);
 
     const head = pull_request.data.head.sha;
     const base = pull_request.data.base.sha;
@@ -110,6 +107,7 @@ export const app = (app: Probot) => {
     }
     console.log("changedFiles", changedFiles);
     console.log("files", files);
+    let madeSuggestion = false;
 
     for (let i = 0; i < changedFiles.length; i++) {
       const f = changedFiles[i];
@@ -132,6 +130,7 @@ export const app = (app: Probot) => {
         }
         try {
           await makeSuggestionsAndPR({ content, patch, fileName: f.filename });
+          madeSuggestion = true;
         } catch (e) {
           context.octokit.issues.createComment({
             owner,
@@ -141,6 +140,16 @@ export const app = (app: Probot) => {
           });
         }
       }
+    }
+    if (!madeSuggestion) {
+      context.octokit.issues.createComment({
+        owner,
+        repo,
+        issue_number: issueNumber,
+        body: `No suggestions made. File(s) ${files.join(
+          ", "
+        )} not found in PR ${issueNumber}}`,
+      });
     }
   });
 };

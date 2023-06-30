@@ -35,8 +35,6 @@ End of patch diff provided
     console.log("settings.temperature", settings.temperature);
     console.log("settings.topP", settings.topP);
 
-    console.log({ prompt });
-
     const res = await this.openai.createChatCompletion({
       function_call: { name: "makeSuggestions" },
       functions: [
