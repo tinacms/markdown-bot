@@ -105,7 +105,10 @@ export const app = (app: Probot) => {
       );
       return;
     }
-    console.log("changedFiles", changedFiles);
+    console.log(
+      "changedFiles",
+      changedFiles.map((x) => x.filename)
+    );
     console.log("files", files);
     let madeSuggestion = false;
 
@@ -130,6 +133,7 @@ export const app = (app: Probot) => {
         }
         try {
           await makeSuggestionsAndPR({ content, patch, fileName: f.filename });
+          console.log(`Made suggestions for file ${f.filename}`);
           madeSuggestion = true;
         } catch (e) {
           context.octokit.issues.createComment({

@@ -46,7 +46,7 @@ End of patch diff provided
               suggestions: {
                 type: "array",
                 description:
-                  "The suggestions to be made. This list must contain at least 1 suggestion",
+                  "The suggestions to be made. This list must contain at least 1 suggestion but no more than 5 suggestions",
                 items: {
                   type: "object",
                   properties: {
