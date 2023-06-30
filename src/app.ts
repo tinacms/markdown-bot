@@ -111,7 +111,7 @@ export const app = (app: Probot) => {
 
     for (let i = 0; i < changedFiles.length; i++) {
       const f = changedFiles[i];
-      console.log("f", f);
+      console.log("f.name", f.filename);
       if (files.includes(f.filename)) {
         const file = await context.octokit.repos.getContent({
           owner,
