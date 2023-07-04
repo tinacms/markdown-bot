@@ -21,7 +21,7 @@ export class OpenAI {
       .split("\n")
       .map((line, index) => `${index + 1}: ${line}`)
       .join("\n");
-    const prompt = `Take the following post that is in markdown format and suggest brief edits to fix grammar and make the content clearer. 
+    const prompt = `Take the following post that is in markdown format and suggest edits to fix grammar and make the content clearer. 
 
 Here is the content:
 ${contentWithLines}
@@ -53,7 +53,7 @@ End of patch diff provided
                     suggestion: {
                       type: "string",
                       description:
-                        "The entire content of the line to be suggested with the suggestion in it",
+                        "The entire line of content with the suggest change(s)",
                     },
                     line: {
                       type: "number",
