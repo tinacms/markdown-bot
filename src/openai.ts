@@ -21,8 +21,8 @@ export class OpenAI {
       .split("\n")
       .map((line, index) => `${index + 1}: ${line}`)
       .join("\n");
-    const prompt = `Take the following post that is in markdown format and suggest edits to fix grammar and make the content clearer. 
-
+    const prompt = `Take the following post that is in markdown format and suggest edits to fix grammar and make the content clearer. The suggestions must contain the entire line of the suggested change.
+ 
 Here is the content:
 ${contentWithLines}
 
@@ -80,6 +80,7 @@ End of patch diff provided
     const args = res.data.choices[0].message?.function_call?.arguments || "";
     const json = JSON.parse(args);
     const suggestions = json.suggestions;
+    console.log("suggestions", suggestions);
     return { suggestions, error: false } as {
       suggestions: { line: number; suggestion: string }[];
       error: boolean;
