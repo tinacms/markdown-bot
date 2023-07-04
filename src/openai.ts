@@ -21,7 +21,7 @@ export class OpenAI {
       .split("\n")
       .map((line, index) => `${index + 1}: ${line}`)
       .join("\n");
-    const prompt = `Take the following post that is in markdown format and suggest edits to fix grammar and make the content clearer. The suggestions must contain the entire line of the suggested change.
+    const prompt = `Suggest content updates to the following article to fix grammar and spelling errors as well as fix redundant words/sentences and rewrite where necessary. The suggestion must contain the entire line from the original content with the suggested change in it. 
  
 Here is the content:
 ${contentWithLines}
@@ -53,7 +53,7 @@ End of patch diff provided
                     suggestion: {
                       type: "string",
                       description:
-                        "The entire line of content with the suggest change(s)",
+                        "The entire line of original content with the suggest change(s)",
                     },
                     line: {
                       type: "number",
