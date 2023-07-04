@@ -30,11 +30,13 @@ export const app = (app: Probot) => {
     if (!settings.defaultsSet) {
       settings.setDefaults({});
     }
-    const files = parseGithubComment(issueComment);
-    if (!files) {
+    const parsedGithubComment = parseGithubComment(issueComment);
+    if (!parsedGithubComment) {
       console.log(`No files found in comment "${issueComment}"`);
       return;
     }
+    const files = parsedGithubComment.fileNames;
+    const userPrompt = parsedGithubComment.prompt;
 
     const openAIKey = await getOpenAIKey(context);
     if (!openAIKey) {
@@ -67,7 +69,11 @@ export const app = (app: Probot) => {
       patch: string;
       fileName: string;
     }) => {
-      const res = await ai.makeSuggestions({ content, patch });
+      const res = await ai.makeSuggestions({
+        content,
+        patch,
+        additionalPrompt: userPrompt,
+      });
       if (res.error) {
         console.log("Error making suggestions");
         return;

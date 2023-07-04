@@ -12,16 +12,19 @@ export class OpenAI {
   async makeSuggestions({
     content,
     patch,
+    additionalPrompt,
   }: {
     content: string;
     patch: string;
+    additionalPrompt?: string;
   }) {
     const settings = Settings.getInstance();
     const contentWithLines = content
       .split("\n")
       .map((line, index) => `${index + 1}: ${line}`)
       .join("\n");
-    const prompt = `Suggest content updates to the following article to fix grammar and spelling errors as well as fix redundant words/sentences and rewrite where necessary. The suggestion must contain the entire line from the original content with the suggested change in it. 
+    const prompt = `Suggest content updates to the following article to fix grammar and spelling errors as well as fix redundant words/sentences and rewrite where necessary. The suggestion must contain the entire line from the original content with the suggested change in it.
+${additionalPrompt || ""}
  
 Here is the content:
 ${contentWithLines}
