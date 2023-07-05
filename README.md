@@ -8,7 +8,7 @@ When ever a user comments `ai fix: <filename>` or `ai fix: <file1>, <file2>` the
 
 ## Example
 
-![Example](./images/example.png)
+![Example](http://res.cloudinary.com/forestry-demo/image/upload/v1688483462/blog-media/supercharge-markdown-blog/Screenshot_2023-07-04_at_11.03.24_AM_bfqnld.png)
 
 ## Usage
 
@@ -29,11 +29,15 @@ Github app and Github action are both hosted by Github and will run on every com
 1. Go to the repo homepage which you want integrate this bot
 2. click settings
 3. click actions under secrets and variables
-4. Change to Variables tab, create a new variable OPENAI_API_KEY with the value of your open api key (For Github Action integration, set it in secrets)
+4. Change to Variables tab, create a new variable OPENAI_API_KEY with the value of your open api key.
 
 ### Add The Github App
 
-TODO:
+Go to the [github app page](#) and install the app on the repo you want to use it on.
+
+### Start Using
+
+Go to an existing pull request (or create one) and comment `ai fix: <filename>` or `ai fix: <file1>, <file2>` and the bot will respond with a suggestion for the contents of the file. :tada: :rocket: your ready to go!
 
 ## Github action Usage
 
