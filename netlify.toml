@@ -2,6 +2,7 @@
   # Sets a custom directory for Netlify Functions
   directory = "functions"
 
+  included_files = ["package.json"]
   # Specifies `esbuild` for functions bundling
   node_bundler = "esbuild"
 
