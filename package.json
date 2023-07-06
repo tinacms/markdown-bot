@@ -17,6 +17,7 @@
     "types": "tsc --emitDeclarationOnly",
     "build": "tsup",
     "build:action": "tsup src/action.ts",
+    "build:lambdaFunction": "tsup src/lambdaFunction.ts",
     "prettier": "prettier --write .",
     "watch": "tsup --watch --onSuccess \"node dist/server.js\"",
     "start": "node dist/server.js",
