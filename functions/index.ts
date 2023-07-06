@@ -1,3 +1,9 @@
-// functions/index.js
+import {
+  createLambdaFunction,
+  createProbot,
+} from "@probot/adapter-aws-lambda-serverless";
+import { app } from "../src/app";
 
-module.exports.handler = require("../dist/lambdaFunction").handler;
+export const handler = createLambdaFunction(app, {
+  probot: createProbot(),
+});
