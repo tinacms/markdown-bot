@@ -9,7 +9,6 @@ const key = process.env.RENDER
   ? process.env.PRIVATE_KEY?.replace(/\\n/g, "\n")
   : process.env.PRIVATE_KEY;
 
-console.log("key", key);
 const server = new Server({
   webhookProxy: process.env.WEBHOOK_PROXY_URL,
   Probot: Probot.defaults({
