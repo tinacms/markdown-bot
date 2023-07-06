@@ -6,7 +6,7 @@
   node_bundler = "esbuild"
 
   # Flags "package-1" as an external node module for all functions
-  external_node_modules = ["@probot/adapter-aws-lambda-serverless","openai", "probot"]
+#   external_node_modules = ["@probot/adapter-aws-lambda-serverless","openai", "probot"]
 
   # Includes all Markdown files inside the "files/" directory.
   included_files = ["files/*.md"]
