@@ -14,5 +14,6 @@ const server = new Server({
   }),
 });
 server.load(app).then(() => {
+  console.log("key", process.env.PRIVATE_KEY);
   server.start();
 });
