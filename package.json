@@ -2,7 +2,6 @@
   "name": "ai-content",
   "version": "1.0.0",
   "private": true,
-  "type": "module",
   "description": "AI suggestions for your content",
   "author": "Logan Anderson",
   "license": "MIT",
