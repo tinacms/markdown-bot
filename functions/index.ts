@@ -1,10 +1,11 @@
 // functions/index.js
-const {
+
+import {
   createLambdaFunction,
   createProbot,
-} = require("@probot/adapter-aws-lambda-serverless");
-const appFn = require("../src/app");
+} from "@probot/adapter-aws-lambda-serverless";
+import { app } from "../src/app";
 
-module.exports.handler = createLambdaFunction(appFn, {
+module.exports.handler = createLambdaFunction(app, {
   probot: createProbot(),
 });
