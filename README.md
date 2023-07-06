@@ -95,21 +95,22 @@ Example:
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fhello-world)
 
-<!-- Use https://vercel.com/docs/integrations/deploy-button#generate-your-own to generate -->
+This will clone the repo to your github account and deploy it to vercel. Before deploying you will need to set the following environment variables:
 
-For more details, refer to the [probot](https://probot.github.io/docs/development/) documentation.
-
-## Development
-
-### Setup
-
-```sh
-# Install dependencies
-pnpm install
-
-# Run the bot
-pnpm watch
+```env
+# The Github App ID
+APP_ID=***
+The Client ID of the Github App
+GITHUB_CLIENT_ID***
+The Client Secret of the Github App
+GITHUB_CLIENT_SECRET=***
+# The private key of the Github App (Copy and pasted from the .pem file)
+PRIVATE_KEY=***
+# The webhook secret of the Github App (User generated and pasted into the Github App)
+WEBHOOK_SECRET=***
 ```
+
+For more details, refer to the [probot](https://probot.github.io/docs/development/#manually-configuring-a-github-app) documentation.
 
 ## Contributing
 
@@ -121,16 +122,12 @@ For more information, please refer to the [Contributing Guide](CONTRIBUTING.md).
 
 This project is inspired by [ChatGPT-CodeReview](https://github.com/anc95/ChatGPT-CodeReview).
 
-# github-app-openai
-
-> A GitHub App built with [Probot](https://github.com/probot/probot) that A Probot app
-
 ## Contributing
 
-If you have suggestions for how github-app-openai could be improved, or want to report a bug, open an issue! We'd love all and any contributions.
+If you have suggestions for how this project could be improved, or want to report a bug, open an issue! We'd love all and any contributions.
 
 For more, check out the [Contributing Guide](CONTRIBUTING.md).
 
 ## License
 
-[ISC](LICENSE) © 2023 Logan Anderson
+[MIT](LICENSE) © 2023 Logan Anderson
