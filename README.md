@@ -12,7 +12,7 @@ When ever a user comments `ai fix: <filename>` or `ai fix: <file1>, <file2>` the
 
 ## Usage
 
-This bot can be used in three ways:
+This bot can be used in two ways:
 
 1. As a Github action
 2. As a Github app (self-hosted)
