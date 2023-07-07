@@ -32,6 +32,46 @@ prompt: Fix only the spelling and grammar errors in the README
 
 ## Github app Usage
 
+We do not provide a hosted version of the Github app so you will need to self-host it. You can self-host it on on most hosting platforms we have setup and tested it on netlify (Functions) and render.
+
+### Self-hosting on Netlify
+
+> NOTE: functions are limited to a 10 second timeout on Netlify. This may cause the bot to fail if the OpenAI API takes too long to respond.
+> To avoid this a background function can be used instead of the normal function. Netlify background functions are only available on the paid tier.
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/tinacms/ai-content)
+
+This will clone the repo to your github account and deploy it to Netlify. [See below](#env-variables) for the required env variables.
+
+### Self-hosting on Render
+
+> NOTE: when using the free tier you may get frequent 503 errors due to the app being put to sleep. To avoid this you can upgrade to the paid tier.
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/tinacms/ai-content)
+
+## ENV Variables
+
+Before deploying you will need to set the following environment variables:
+
+```env
+# The Github App ID
+APP_ID=***
+
+# The Client ID of the Github App
+GITHUB_CLIENT_ID***
+
+# The Client Secret of the Github App
+GITHUB_CLIENT_SECRET=***
+
+# The private key of the Github App (Copy and pasted from the .pem file)
+PRIVATE_KEY=***
+
+# The webhook secret of the Github App (User generated and pasted into the Github App)
+WEBHOOK_SECRET=***
+```
+
+For more details, refer to the [probot](https://probot.github.io/docs/development/#manually-configuring-a-github-app) documentation.
+
 ## Github action Usage
 
 When using as a Github action it will run on every comment to the repo, the bot will only respond to comments on a PR and only if the comment follows the format `ai fix: <filename>` or `ai fix: <file1>, <file2>`.
@@ -80,40 +120,9 @@ jobs:
 1. The bot will automatically suggest content when
 2. After making changes to the issue or pull request, the content suggestion bot will provide updated suggestions.
 
-## Self-hosting on Netlify
+## Contributing / Running Locally
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/tinacms/ai-content)
-
-This will clone the repo to your github account and deploy it to Netlify. See below for the required env variables.
-
-## Self-hosting on Vercel
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fhello-world)
-
-This will clone the repo to your github account and deploy it to Vercel. See below for the required env variables.
-
-## Env
-
-Before deploying you will need to set the following environment variables:
-
-```env
-# The Github App ID
-APP_ID=***
-# The Client ID of the Github App
-GITHUB_CLIENT_ID***
-# The Client Secret of the Github App
-GITHUB_CLIENT_SECRET=***
-# The private key of the Github App (Copy and pasted from the .pem file)
-PRIVATE_KEY=***
-# The webhook secret of the Github App (User generated and pasted into the Github App)
-WEBHOOK_SECRET=***
-```
-
-For more details, refer to the [probot](https://probot.github.io/docs/development/#manually-configuring-a-github-app) documentation.
-
-## Contributing
-
-If you have suggestions for how the content suggestion bot could be improved or want to report a bug, open an issue! We welcome all contributions.
+If you want to run locally or if you have suggestions for how the content suggestion bot could be improved or want to report a bug, open an issue! We welcome all contributions.
 
 For more information, please refer to the [Contributing Guide](CONTRIBUTING.md).
 
