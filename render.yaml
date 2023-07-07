@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: ai-content
+    env: node
+    buildCommand: pnpm install && pnpm build
+    startCommand: pnpm start
