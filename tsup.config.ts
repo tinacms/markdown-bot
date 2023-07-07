@@ -14,9 +14,8 @@ export default defineConfig((options) => {
     sourcemap: true,
     clean: true,
     // If we are building the action we need to include all the dependencies since actions do not install dependencies before running.
-    noExternal:
-      entry.includes("src/action.ts") || entry.includes("src/lambdaFunction.ts")
-        ? Object.keys(dependencies).concat(Object.keys(devDependencies))
-        : [],
+    noExternal: entry.includes("src/action.ts")
+      ? Object.keys(dependencies).concat(Object.keys(devDependencies))
+      : [],
   };
 });
