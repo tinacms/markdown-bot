@@ -38,6 +38,20 @@ prompt: Fix only the spelling and grammar errors in the README
 
 We do not provide a hosted version of the Github app so you will need to self-host it. You can self-host it on on most hosting platforms we have setup and tested it on netlify (Functions) and render.
 
+### Create a Github App
+
+1. Go to your github settings
+2. Click on Developer Settings
+3. Click on Github Apps
+4. Click on New Github App
+5. Fill in the details (can put in temp values for the url and webhook url. We can update these later)
+6. Under permissions select `Read & Write` for `Contents` and `Read & Write` for `Pull Requests`
+7. Under Subscribe to events select `Issue comment`
+8. Generate a [webhook secrete](https://docs.github.com/en/webhooks-and-events/webhooks/securing-your-webhooks) and copy it into the `Webhook Secret` field and save it somewhere safe
+9. Make sure "Only on this account" is selected under "Where can this GitHub App be installed?"
+10. Click "Create Github App"
+11. In the app settings click on "Generate a private key" and save the .pem file somewhere safe
+
 ### Self-hosting on Netlify
 
 > NOTE: functions are limited to a 10 second timeout on Netlify. This may cause the bot to fail if the OpenAI API takes too long to respond.
@@ -73,6 +87,8 @@ PRIVATE_KEY=***
 # The webhook secret of the Github App (User generated and pasted into the Github App)
 WEBHOOK_SECRET=***
 ```
+
+See the [probot docs](https://probot.github.io/docs/configuration/) for more details.
 
 For more details, refer to the [probot](https://probot.github.io/docs/development/#manually-configuring-a-github-app) documentation.
 
