@@ -14,30 +14,23 @@ When ever a user comments `ai fix: <filename>` or `ai fix: <file1>, <file2>` the
 
 This bot can be used in three ways:
 
-1. As a Github app
-2. As a Github action
-3. As a Github app (self-hosted)
+1. As a Github action
+2. As a Github app (self-hosted)
 
 The easiest way to get started is to use the hosted Github app but do to so you will need to expose your openai api key as a [github variable](https://docs.github.com/en/actions/learn-github-actions/variables). While variables are not encrypted they are only exposed accessible to Github apps/developers that have access to variables. If you do not want to expose your api key you can use the Github action or self-hosted Github app.
 
-Github app and Github action are both hosted by Github and will run on every comment to the repo, the bot will only respond to comments on a PR and only if the comment follows the format `ai fix: <filename>` or `ai fix: <file1>, <file2>`.
+Github app and Github action are both hosted by Github and will run on every comment to the repo, the bot will only respond to comments on a PR and only if the comment follows the format `ai fix: <filename>` or `ai fix: <file1>, <file2>`. A prompt can also be added by adding a adding `prompt: <prompt>` after the filename to the to the comment.
+
+For example:
+
+```
+ai fix: README.md
+prompt: Fix only the spelling and grammar errors in the README
+```
+
+![Example](http://res.cloudinary.com/forestry-demo/image/upload/v1688736596/blog-media/supercharge-markdown-blog/Screenshot_2023-07-07_at_8.41.32_AM_xsoswd.png)
 
 ## Github app Usage
-
-### Add the Github Variable
-
-1. Go to the repo homepage which you want integrate this bot
-2. click settings
-3. click actions under secrets and variables
-4. Change to Variables tab, create a new variable OPENAI_API_KEY with the value of your open api key.
-
-### Add The Github App
-
-Go to the [github app page](#) and install the app on the repo you want to use it on.
-
-### Start Using
-
-Go to an existing pull request (or create one) and comment `ai fix: <filename>` or `ai fix: <file1>, <file2>` and the bot will respond with a suggestion for the contents of the file. :tada: :rocket: your ready to go!
 
 ## Github action Usage
 
@@ -86,10 +79,6 @@ jobs:
 
 1. The bot will automatically suggest content when
 2. After making changes to the issue or pull request, the content suggestion bot will provide updated suggestions.
-
-Example:
-
-![Content Suggestions](./images/content-suggestions.png)
 
 ## Self-hosting on vercel
 
