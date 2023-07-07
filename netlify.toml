@@ -8,3 +8,12 @@
 
   # Flags "package-1" as an external node module for all functions
 #   external_node_modules = ["@probot/adapter-aws-lambda-serverless","openai", "probot"]
+
+[template.environment]
+  WEBHOOK_PROXY_URL = "<your_value>"
+  APP_ID = "<your_value>"
+  GITHUB_CLIENT_ID = "<your_value>"
+  PRIVATE_KEY = "<your_value>"
+  GITHUB_CLIENT_SECRET = "<your_value>"
+  WEBHOOK_SECRET = "<your_value>"
+  OPENAI_API_KEY = "<your_value>"
