@@ -25,7 +25,7 @@ export class OpenAI {
       .join("\n");
     const prompt = `Suggest between one and three content updates to the following article to fix grammar and spelling errors as well as fix redundant words/sentences and rewrite where necessary.
 The suggestion must contain the entire line from the original content with the suggested change in it.
-Do not suggest changes in spacing (like adding or removing tabs or spaces).
+Do not suggest suggest adding tabs to the beginning of a paragraph.
 
 ${additionalPrompt || ""}
  
