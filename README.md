@@ -21,7 +21,9 @@ A github app can be hosted on any hosting platform that supports node.js, it can
 
 > NOTE: Serverless functions sometime have timeout limitations or sometimes stop after a request responds with e 202 status code (This is the behavior in vercel). This may cause the bot to fail if the OpenAI API takes too long to respond.
 
-A Github action are both hosted by Github and will run on every comment to the repo, the bot will only respond to comments on a PR and only if the comment follows the format `ai fix: <filename>` or `ai fix: <file1>, <file2>`. A prompt can also be added by adding a adding `prompt: <prompt>` after the filename to the to the comment.
+A Github action is hosted by Github and will run on every comment to the repo, the action will only respond to comments on a PR and only if the comment follows the correct format.
+
+The bot responds to a comment in the format `ai fix: <filename>` or `ai fix: <file1>, <file2>`. A prompt can also be added by adding a adding `prompt: <prompt>` after the filename to the to the comment.
 
 For example:
 
