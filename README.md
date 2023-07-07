@@ -14,12 +14,14 @@ When ever a user comments `ai fix: <filename>` or `ai fix: <file1>, <file2>` the
 
 This bot can be used in two ways:
 
-1. As a Github action
-2. As a Github app (self-hosted)
+1. As a Github app (self-hosted)
+2. As a Github action
 
-The easiest way to get started is to use the hosted Github app but do to so you will need to expose your openai api key as a [github variable](https://docs.github.com/en/actions/learn-github-actions/variables). While variables are not encrypted they are only exposed accessible to Github apps/developers that have access to variables. If you do not want to expose your api key you can use the Github action or self-hosted Github app.
+A github app can be hosted on any hosting platform that supports node.js, it can be also be hosted in a serverless environment such as AWS Lambda or Netlify Functions.
 
-Github app and Github action are both hosted by Github and will run on every comment to the repo, the bot will only respond to comments on a PR and only if the comment follows the format `ai fix: <filename>` or `ai fix: <file1>, <file2>`. A prompt can also be added by adding a adding `prompt: <prompt>` after the filename to the to the comment.
+> NOTE: Serverless functions sometime have timeout limitations or sometimes stop after a request responds with e 202 status code (This is the behavior in vercel). This may cause the bot to fail if the OpenAI API takes too long to respond.
+
+A Github action are both hosted by Github and will run on every comment to the repo, the bot will only respond to comments on a PR and only if the comment follows the format `ai fix: <filename>` or `ai fix: <file1>, <file2>`. A prompt can also be added by adding a adding `prompt: <prompt>` after the filename to the to the comment.
 
 For example:
 
