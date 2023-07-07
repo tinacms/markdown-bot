@@ -80,6 +80,27 @@ jobs:
 1. The bot will automatically suggest content when
 2. After making changes to the issue or pull request, the content suggestion bot will provide updated suggestions.
 
+## Self-hosting on Netlify
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/tinacms/ai-content)
+
+This will clone the repo to your github account and deploy it to Netlify. Before deploying you will need to set the following environment variables:
+
+```env
+# The Github App ID
+APP_ID=***
+The Client ID of the Github App
+GITHUB_CLIENT_ID***
+The Client Secret of the Github App
+GITHUB_CLIENT_SECRET=***
+# The private key of the Github App (Copy and pasted from the .pem file)
+PRIVATE_KEY=***
+# The webhook secret of the Github App (User generated and pasted into the Github App)
+WEBHOOK_SECRET=***
+```
+
+For more details, refer to the [probot](https://probot.github.io/docs/development/#manually-configuring-a-github-app) documentation.
+
 ## Self-hosting on vercel
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fhello-world)
