@@ -5,10 +5,3 @@ services:
     env: node
     buildCommand: pnpm install && pnpm build
     startCommand: pnpm start
-    envVars:
-      - key: APP_ID
-      - key: GITHUB_CLIENT_ID
-      - key: PRIVATE_KEY
-      - key: WEBHOOK_SECRET
-      - key: GITHUB_CLIENT_SECRET
-      - key: OPENAI_API_KEY
