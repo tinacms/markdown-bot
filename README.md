@@ -10,6 +10,24 @@ When ever a user comments `ai fix: <filename>` or `ai fix: <file1>, <file2>` the
 
 ![Example](http://res.cloudinary.com/forestry-demo/image/upload/v1688483462/blog-media/supercharge-markdown-blog/Screenshot_2023-07-04_at_11.03.24_AM_bfqnld.png)
 
+## Table of Contents
+
+- [Example](#example)
+- [Usage](#usage)
+- [Github app Usage](#github-app-usage)
+  - [Create a Github App](#create-a-github-app)
+  - [Self-hosting on Netlify](#self-hosting-on-netlify)
+  - [Self-hosting on Render](#self-hosting-on-render)
+- [ENV Variables](#env-variables)
+- [Github action Usage](#github-action-usage)
+  - [Add the Github secret](#add-the-github-secret)
+  - [Add The Github Action to your repo](#add-the-github-action-to-your-repo)
+  - [Start Using](#start-using)
+- [Contributing / Running Locally](#contributing---running-locally)
+- [Credit](#credit)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Usage
 
 This bot can be used in two ways:
@@ -127,13 +145,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 ```
-
-### Configuration
-
-1. Click on `Settings`.
-2. Click on `Actions` under `Secrets and Variables`.
-3. Change to the `Variables` tab and create a new variable `OPENAI_API_KEY` with the value of your OpenAI API key. (For GitHub Action integration, set it in secrets)
-   ![Variable Configuration](./images/variable-configuration.png)
 
 ### Start Using
 
