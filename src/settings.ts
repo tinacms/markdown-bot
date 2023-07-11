@@ -50,6 +50,12 @@ export class Settings {
     topP?: number;
   }) {
     if (model || process.env.MODEL) {
+      const m = model || process.env.MODEL || DEFAULT_MODEL;
+      if (m !== "gpt-4-0613" && m !== "gpt-3.5-turbo-0613") {
+        throw new Error(
+          "Invalid model. Must be one of gpt-4-0613 or gpt-3.5-turbo-0613"
+        );
+      }
       this.model = model || process.env.MODEL || DEFAULT_MODEL;
     }
     if (temperature || process.env.TEMPERATURE) {

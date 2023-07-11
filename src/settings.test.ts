@@ -14,14 +14,14 @@ describe("Settings", () => {
   it("should set defaults", () => {
     const settings = Settings.getInstance();
     settings.setDefaults({
-      model: "test",
+      model: "gpt-4-0613",
       temperature: 0.5,
       githubToken: "test",
       openaiKey: "test",
       topP: 0.5,
     });
     expect(settings.defaultsSet).toBe(true);
-    expect(settings.model).toBe("test");
+    expect(settings.model).toBe("gpt-4-0613");
     expect(settings.temperature).toBe(0.5);
     expect(settings.topP).toBe(0.5);
     expect(settings.githubToken).toBe("test");
@@ -29,7 +29,7 @@ describe("Settings", () => {
   });
 
   it("should set defaults from env", () => {
-    process.env.MODEL = "test";
+    process.env.MODEL = "gpt-4-0613";
     process.env.TEMPERATURE = "0.5";
     process.env.TOP_P = "0.5";
     process.env.GITHUB_TOKEN = "test";
@@ -37,7 +37,7 @@ describe("Settings", () => {
     const settings = Settings.getInstance();
     settings.setDefaults({});
     expect(settings.defaultsSet).toBe(true);
-    expect(settings.model).toBe("test");
+    expect(settings.model).toBe("gpt-4-0613");
     expect(settings.temperature).toBe(0.5);
     expect(settings.topP).toBe(0.5);
     expect(settings.githubToken).toBe("test");
@@ -51,5 +51,9 @@ describe("Settings", () => {
     const settings = Settings.getInstance();
     const settings2 = Settings.getInstance();
     expect(settings).toBe(settings2);
+  });
+  it("Should throw an error if model is invalid", () => {
+    const settings = Settings.getInstance();
+    expect(() => settings.setDefaults({ model: "gpt-4" })).toThrowError();
   });
 });
