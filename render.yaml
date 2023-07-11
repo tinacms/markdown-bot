@@ -1,5 +1,6 @@
 services:
   - type: web
+    plan: free
     name: ai-content
     env: node
     buildCommand: pnpm install && pnpm build
