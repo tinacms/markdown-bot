@@ -104,22 +104,22 @@ PRIVATE_KEY=***
 WEBHOOK_SECRET=***
 ```
 
-See the [probot docs](https://probot.github.io/docs/configuration/) for more details.
+See the [ProBot docs](https://probot.github.io/docs/configuration/) for more details.
 
-For more details, refer to the [probot](https://probot.github.io/docs/development/#manually-configuring-a-github-app) documentation.
+For more details, refer to the [ProBot](https://probot.github.io/docs/development/#manually-configuring-a-github-app) documentation.
 
-## Github action Usage
+## GitHub Action Usage
 
-When using as a Github action it will run on every comment to the repo, the bot will only respond to comments on a PR and only if the comment follows the format `ai fix: <filename>` or `ai fix: <file1>, <file2>`.
+When using as a Github Action it will run on every comment to the repo, the bot will only respond to comments on a PR and only if the comment follows the format `ai fix: <filename>` or `ai fix: <file1>, <file2>`.
 
-### Add the Github secret
+### Add the GitHub secret
 
 1. Go to the repo homepage which you want integrate this bot
-2. click settings
-3. click actions under secrets and variables
-4. Change to Secrets tab, create a new secrets OPENAI_API_KEY with the value of your open api key
+2. Click "Settings"
+3. Click "Actions" under "Secrets and Variables"
+4. Change to "Secrets" tab, create a new `OPENAI_API_KEY` secret with the value of your OpenAI API key
 
-### Add The Github Action to your repo
+### Add The GitHub Action to your repo
 
 `.github/actions/content-suggestion.yml`
 
