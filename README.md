@@ -60,11 +60,13 @@ We do not provide a hosted version of the GitHub app so you will need to self-ho
 
 > Follow the steps below or watch the video
 
-<div style="position:relative;padding-top:56.25%;">
+[![Creating a Github App](https://i.ytimg.com/vi/2dZe3HlqfNA/maxresdefault.jpg)](https://www.youtube.com/watch?v=2dZe3HlqfNA "Creating a Github App")
+
+<!-- <div style="position:relative;padding-top:56.25%;">
   <iframe width="560" frameborder="0" allowfullscreen
       style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://www.youtube.com/embed/2dZe3HlqfNA" title="TinaCMS Demo video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
   </iframe>
-</div>
+</div> -->
 
 1. Go to your GitHub settings, [create a new GitHub App](https://github.com/settings/apps/new)
 2. Fill in the details (can put in temp values for the url and webhook url. We can update these later)
