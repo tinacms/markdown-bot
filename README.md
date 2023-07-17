@@ -62,7 +62,7 @@ We do not provide a hosted version of the GitHub app so you will need to self-ho
 2. Fill in the details (can put in temp values for the url and webhook url. We can update these later)
 3. Under permissions select `Read` for `Contents`. Select `Read & Write` for `Pull Requests` and `Issues`.
 4. Under Subscribe to events select `Issue comment`
-5. Generate a [webhook secrete](https://docs.github.com/en/webhooks-and-events/webhooks/securing-your-webhooks) and copy it into the `Webhook Secret` field and save it somewhere safe
+5. Generate a [webhook secret](https://docs.github.com/en/webhooks-and-events/webhooks/securing-your-webhooks) and copy it into the `Webhook Secret` field and save it somewhere safe
 6. Make sure "Only on this account" is selected under "Where can this GitHub App be installed?"
 7. Click "Create Github App"
 8. In the app settings click on "Generate a private key" and save the .pem file somewhere safe
