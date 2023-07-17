@@ -4,7 +4,7 @@
 
 This bot will make github suggestion comments to update the contents of a file in a PR
 
-When ever a user comments `ai fix: <filename>` or `ai fix: <file1>, <file2>` the bot will respond with a suggestion for the contents of the file.
+When a user comments `ai fix: <filename>` or `ai fix: <file1>, <file2>` the bot will respond with inline suggestions on the PR.
 
 ## Example
 
@@ -35,13 +35,13 @@ This bot can be used in two ways:
 1. As a Github app (self-hosted)
 2. As a Github action
 
-A github app can be hosted on any hosting platform that supports node.js, it can be also be hosted in a serverless environment such as AWS Lambda or Netlify Functions.
+A GitHub App can be hosted on any hosting platform that supports Node.js. It can be also be hosted in a serverless environment such as AWS Lambda or Netlify Functions.
 
-> NOTE: Serverless functions sometime have timeout limitations or sometimes stop after a request responds with e 202 status code (This is the behavior in vercel). This may cause the bot to fail if the OpenAI API takes too long to respond.
+> NOTE: Serverless functions sometimes have timeout limitations or stop after a request responds with a 202 status code (This is the behavior in Vercel). This may cause the bot to fail if the OpenAI API takes too long to respond.
 
-A Github action is hosted by Github and will run on every comment to the repo, the action will only respond to comments on a PR and only if the comment follows the correct format.
+A GitHub Action is hosted by Github and will run on every comment to the repo, the action will only respond to comments on a PR and only if the comment follows the correct format.
 
-The bot responds to a comment in the format `ai fix: <filename>` or `ai fix: <file1>, <file2>`. A prompt can also be added by adding a adding `prompt: <prompt>` after the filename to the to the comment.
+The bot responds to a comment in the format `ai fix: <filename>` or `ai fix: <file1>, <file2>`. A prompt can also be added by adding `prompt: <prompt>` after the filename to the to the comment.
 
 For example:
 
@@ -52,23 +52,20 @@ prompt: Fix only the spelling and grammar errors in the README
 
 ![Example](http://res.cloudinary.com/forestry-demo/image/upload/v1688736596/blog-media/supercharge-markdown-blog/Screenshot_2023-07-07_at_8.41.32_AM_xsoswd.png)
 
-## Github app Usage
+## GitHub App Usage
 
-We do not provide a hosted version of the Github app so you will need to self-host it. You can self-host it on on most hosting platforms we have setup and tested it on netlify (Functions) and render.
+We do not provide a hosted version of the GitHub app so you will need to self-host it. You can self-host it on most hosting platforms. We have setup and tested it on Netlify (Functions) and Render.
 
-### Create a Github App
+### Create a GitHub App
 
-1. Go to your github settings
-2. Click on Developer Settings
-3. Click on Github Apps
-4. Click on New Github App
-5. Fill in the details (can put in temp values for the url and webhook url. We can update these later)
-6. Under permissions select `Read` for `Contents`. Select `Read & Write` for `Pull Requests` and `Issues`.
-7. Under Subscribe to events select `Issue comment`
-8. Generate a [webhook secrete](https://docs.github.com/en/webhooks-and-events/webhooks/securing-your-webhooks) and copy it into the `Webhook Secret` field and save it somewhere safe
-9. Make sure "Only on this account" is selected under "Where can this GitHub App be installed?"
-10. Click "Create Github App"
-11. In the app settings click on "Generate a private key" and save the .pem file somewhere safe
+1. Go to your GitHub settings, [create a new GitHub App](https://github.com/settings/apps/new)
+2. Fill in the details (can put in temp values for the url and webhook url. We can update these later)
+3. Under permissions select `Read` for `Contents`. Select `Read & Write` for `Pull Requests` and `Issues`.
+4. Under Subscribe to events select `Issue comment`
+5. Generate a [webhook secrete](https://docs.github.com/en/webhooks-and-events/webhooks/securing-your-webhooks) and copy it into the `Webhook Secret` field and save it somewhere safe
+6. Make sure "Only on this account" is selected under "Where can this GitHub App be installed?"
+7. Click "Create Github App"
+8. In the app settings click on "Generate a private key" and save the .pem file somewhere safe
 
 ### Self-hosting on Netlify
 
