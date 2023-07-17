@@ -58,6 +58,14 @@ We do not provide a hosted version of the GitHub app so you will need to self-ho
 
 ### Create a GitHub App
 
+> Follow the steps below or watch the video
+
+<div style="position:relative;padding-top:56.25%;">
+  <iframe width="560" frameborder="0" allowfullscreen
+      style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://www.youtube.com/embed/2dZe3HlqfNA" title="TinaCMS Demo video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
+  </iframe>
+</div>
+
 1. Go to your GitHub settings, [create a new GitHub App](https://github.com/settings/apps/new)
 2. Fill in the details (can put in temp values for the url and webhook url. We can update these later)
 3. Under permissions select `Read` for `Contents`. Select `Read & Write` for `Pull Requests` and `Issues`.
@@ -72,6 +80,12 @@ We do not provide a hosted version of the GitHub app so you will need to self-ho
 > NOTE: functions are limited to a 10 second timeout on Netlify. This may cause the bot to fail if the OpenAI API takes too long to respond.
 > To avoid this a background function can be used instead of the normal function. Netlify background functions are only available on the paid tier.
 
+<div style="position:relative;padding-top:56.25%;">
+  <iframe width="560" frameborder="0" allowfullscreen
+      style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://www.youtube.com/embed/Enogh9NGq0M" title="TinaCMS Demo video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
+  </iframe>
+</div>
+
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/tinacms/ai-content)
 
 This will clone the repo to your github account and deploy it to Netlify. [See below](#env-variables) for the required env variables.
@@ -79,6 +93,12 @@ This will clone the repo to your github account and deploy it to Netlify. [See b
 ### Self-hosting on Render
 
 > NOTE: when using the free tier you may get frequent 503 errors due to the app being put to sleep. To avoid this you can upgrade to the paid tier.
+
+<div style="position:relative;padding-top:56.25%;">
+  <iframe width="560" frameborder="0" allowfullscreen
+      style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://www.youtube.com/embed/_USVU0bHFG8" title="TinaCMS Demo video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
+  </iframe>
+</div>
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/tinacms/ai-content)
 
@@ -146,8 +166,9 @@ jobs:
 
 ### Start Using
 
-1. The bot will automatically suggest content when
-2. After making changes to the issue or pull request, the content suggestion bot will provide updated suggestions.
+The Github Action is set to run on every issue comment but it will only respond to comments on a PR and only if the comment follows the format `ai fix: <filename>` or `ai fix: <file1>, <file2>`.
+
+To start using, on a PR comment `ai fix: <filename>`.
 
 ## Contributing / Running Locally
 
