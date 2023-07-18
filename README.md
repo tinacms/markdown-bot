@@ -144,8 +144,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      # TODO: change to tina repo
-      - uses: logan-anderson/openai-content-suggestions@v0
+      - uses: tinacms/ai-content@v0
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
