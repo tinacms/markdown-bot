@@ -19,8 +19,7 @@ prompt: only return a signle suggestion
 
 ## Table of Contents
 
-- [Example](#example)
-- [Usage](#usage)
+- [Implementation Overview](#implementation-overview)
 - [Implementing as a GitHub App](#github-app-implementation)
   - [Create a GitHub App](#create-a-github-app)
   - [Hosting the App](#hosting-the-bot-backend)
@@ -36,7 +35,7 @@ prompt: only return a signle suggestion
 - [Contributing](#contributing)
 - [License](#license)
 
-## Implementation
+## Implementation Overview
 
 This bot can be implemented in two ways:
 
