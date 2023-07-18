@@ -39,6 +39,26 @@ Here are a few things you can do that will increase the likelihood of your pull 
 
 Work in Progress pull requests are also welcome to get feedback early on, or if there is something blocked you.
 
+## How to update the Github action
+
+Make sure you are on the latest version of the main branch. After that you can checkout to a new branch.
+
+EXAMPLE: `git checkout -b v0.1`
+
+Next run the build command to build the action.
+
+```bash
+pnpm build:action
+```
+
+This will create a new folder called `dist` with the action inside. Add the dist folder to git by running
+
+```bash
+ git add dist/ -f
+```
+
+Now you can push up the branch to github and reference it in your action file. Eg: `tinacms/ai-content@v0.1`
+
 ## Resources
 
 - [How to Contribute to Open Source](https://opensource.guide/how-to-contribute/)
