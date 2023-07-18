@@ -2,7 +2,7 @@
 
 > A content suggestion robot powered by ChatGPT
 
-This bot will make github suggestion comments to update the contents of a file in a PR
+This bot will make GitHub suggestion comments to update the contents of a file in a PR
 
 When a user comments `ai fix: <filename>` or `ai fix: <file1>, <file2>` the bot will respond with inline suggestions on the PR.
 
@@ -14,14 +14,15 @@ When a user comments `ai fix: <filename>` or `ai fix: <file1>, <file2>` the bot 
 
 - [Example](#example)
 - [Usage](#usage)
-- [Github app Usage](#github-app-usage)
-  - [Create a Github App](#create-a-github-app)
-  - [Self-hosting on Netlify](#self-hosting-on-netlify)
-  - [Self-hosting on Render](#self-hosting-on-render)
+- [Implementing as a GitHub App](#github-app-usage)
+  - [Create a GitHub App](#create-a-github-app)
+  - [Hosting the App](#hosting-the-bot-backend)
+    - [Self-hosting on Netlify](#self-hosting-on-netlify)
+    - [Self-hosting on Render](#self-hosting-on-render)
 - [ENV Variables](#env-variables)
-- [Github action Usage](#github-action-usage)
-  - [Add the Github secret](#add-the-github-secret)
-  - [Add The Github Action to your repo](#add-the-github-action-to-your-repo)
+- [Implementing as a GitHub Action](#github-action-usage)
+  - [Add the GitHub Secret](#add-the-github-secret)
+  - [Add The GitHub Action to your repo](#add-the-github-action-to-your-repo)
   - [Start Using](#start-using)
 - [Contributing / Running Locally](#contributing---running-locally)
 - [Credit](#credit)
@@ -32,16 +33,16 @@ When a user comments `ai fix: <filename>` or `ai fix: <file1>, <file2>` the bot 
 
 This bot can be used in two ways:
 
-1. As a Github app (self-hosted)
-2. As a Github action
+1. As a GitHub App (self-hosted)
+2. As a GitHub Action
 
-A GitHub App can be hosted on any hosting platform that supports Node.js. It can be also be hosted in a serverless environment such as AWS Lambda or Netlify Functions.
+A GitHub App can be hosted on any hosting platform that supports Node.js. It can also be hosted in a serverless environment such as AWS Lambda or Netlify Functions.
 
 > NOTE: Serverless functions sometimes have timeout limitations or stop after a request responds with a 202 status code (This is the behavior in Vercel). This may cause the bot to fail if the OpenAI API takes too long to respond.
 
-A GitHub Action is hosted by Github and will run on every comment to the repo, the action will only respond to comments on a PR and only if the comment follows the correct format.
+A GitHub Action is hosted by GitHub and will run on every comment to the repo, the action will only respond to comments on a PR and only if the comment follows the correct format.
 
-The bot responds to a comment in the format `ai fix: <filename>` or `ai fix: <file1>, <file2>`. A prompt can also be added by adding `prompt: <prompt>` after the filename to the to the comment.
+The bot responds to a comment in the format `ai fix: <filename>` or `ai fix: <file1>, <file2>`. A prompt can also be added by adding `prompt: <prompt>` after the filename to the comment.
 
 For example:
 
@@ -54,24 +55,28 @@ prompt: Fix only the spelling and grammar errors in the README
 
 ## GitHub App Usage
 
-We do not provide a hosted version of the GitHub app so you will need to self-host it. You can self-host it on most hosting platforms. We have setup and tested it on Netlify (Functions) and Render.
+We do not provide a hosted version of the GitHub App so you will need to self-host it. You can self-host it on most hosting platforms. We have set up and tested it on Netlify (Functions) and Render.
 
 ### Create a GitHub App
 
 > Follow the steps below or watch the video
 
-[![Creating a Github App](https://i.ytimg.com/vi/efghs1J56i8/maxresdefault.jpg)](https://www.youtube.com/watch?v=efghs1J56i8 "Creating a Github App")
+[![Creating a GitHub App](https://i.ytimg.com/vi/efghs1J56i8/maxresdefault.jpg)](https://www.youtube.com/watch?v=efghs1J56i8 "Creating a GitHub App")
 
 1. Go to your GitHub settings, [create a new GitHub App](https://github.com/settings/apps/new)
-2. Fill in the details (can put in temp values for the url and webhook url. We can update these later)
+2. Fill in the details (can put in temp values for the URL and webhook URL. We can update these later)
 3. Under permissions select `Read` for `Contents`. Select `Read & Write` for `Pull Requests` and `Issues`.
-4. Under Subscribe to events select `Issue comment`
+4. Under "Subscribe to Events" select `Issue comment`
 5. Generate a [webhook secret](https://docs.github.com/en/webhooks-and-events/webhooks/securing-your-webhooks) and copy it into the `Webhook Secret` field and save it somewhere safe
 6. Make sure "Only on this account" is selected under "Where can this GitHub App be installed?"
-7. Click "Create Github App"
+7. Click "Create GitHub App"
 8. In the app settings click on "Generate a private key" and save the .pem file somewhere safe
 
-### Self-hosting on Netlify
+### Hosting the Bot Backend
+
+For the GitHub App implementation of this bot, you need to host the backend somewhere. This sets up an API that will be requested once a user on your repo comments on a line in your PRs.
+
+#### Self-hosting on Netlify
 
 > NOTE: functions are limited to a 10 second timeout on Netlify. This may cause the bot to fail if the OpenAI API takes too long to respond.
 > To avoid this a background function can be used instead of the normal function. Netlify background functions are only available on the paid tier.
@@ -80,9 +85,9 @@ We do not provide a hosted version of the GitHub app so you will need to self-ho
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/tinacms/ai-content)
 
-This will clone the repo to your github account and deploy it to Netlify. [See below](#env-variables) for the required env variables.
+This will clone the repo to your GitHub account and deploy it to Netlify. [See below](#env-variables) for the required env variables.
 
-### Self-hosting on Render
+#### Self-hosting on Render
 
 > NOTE: when using the free tier you may get frequent 503 errors due to the app being put to sleep. To avoid this you can upgrade to the paid tier.
 
@@ -90,42 +95,40 @@ This will clone the repo to your github account and deploy it to Netlify. [See b
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/tinacms/ai-content)
 
-## ENV Variables
+#### ENV Variables
 
-Before deploying you will need to set the following environment variables:
+When setting the bot backend on your hosting provider, you will need to set the following environment variables:
 
 ```env
-# The Github App ID
+# The GitHub App ID
 APP_ID=***
 
-# The Client ID of the Github App
+# The Client ID of the GitHub App
 GITHUB_CLIENT_ID=***
 
-# The Client Secret of the Github App
+# The Client Secret of the GitHub App
 GITHUB_CLIENT_SECRET=***
 
-# The private key of the Github App (Copy and pasted from the .pem file)
+# The private key of the GitHub App (Copy and pasted from the .pem file)
 PRIVATE_KEY=***
 
-# The webhook secret of the Github App (User generated and pasted into the Github App)
+# The webhook secret of the GitHub App (User generated and pasted into the GitHub App)
 # Can be generated by running: `ruby -rsecurerandom -e 'puts SecureRandom.hex(20)`
 WEBHOOK_SECRET=***
 ```
 
-See the [ProBot docs](https://probot.github.io/docs/configuration/) for more details.
-
-For more details, refer to the [ProBot](https://probot.github.io/docs/development/#manually-configuring-a-github-app) documentation.
+See the [ProBot docs](https://probot.github.io/docs/configuration/) & [ProBot Configuration Guide](https://probot.github.io/docs/development/#manually-configuring-a-github-app) for more details.
 
 ## GitHub Action Usage
 
-When using as a Github Action it will run on every comment to the repo, the bot will only respond to comments on a PR and only if the comment follows the format `ai fix: <filename>` or `ai fix: <file1>, <file2>`.
+When implementing this bot as a GitHub Action it will run on every comment to the repo, the bot will only respond to comments on a PR and only if the comment follows the format `ai fix: <filename>` or `ai fix: <file1>, <file2>`.
 
-### Add the GitHub secret
+### Add the GitHub Secret
 
-1. Go to the repo homepage which you want integrate this bot
+1. Go to the repo homepage in which you want to integrate this bot
 2. Click "Settings"
 3. Click "Actions" under "Secrets and Variables"
-4. Change to "Secrets" tab, create a new `OPENAI_API_KEY` secret with the value of your OpenAI API key
+4. Change to the "Secrets" tab, create a new `OPENAI_API_KEY` secret with the value of your OpenAI API key
 
 ### Add The GitHub Action to your repo
 
@@ -152,9 +155,9 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 ```
 
-### Start Using
+### Start Using The Bot
 
-The Github Action is set to run on every issue comment but it will only respond to comments on a PR and only if the comment follows the format `ai fix: <filename>` or `ai fix: <file1>, <file2>`.
+The GitHub Action is set to run on every issue comment but it will only respond to comments on a PR and only if the comment follows the format `ai fix: <filename>` or `ai fix: <file1>, <file2>`.
 
 To start using, on a PR comment `ai fix: <filename>`.
 
