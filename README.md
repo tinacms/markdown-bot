@@ -6,43 +6,7 @@ This bot will make GitHub suggestion comments to update the contents of a file i
 
 When a user comments `ai fix: <filename>` or `ai fix: <file1>, <file2>` the bot will respond with inline suggestions on the PR.
 
-## Example
-
-![Example](http://res.cloudinary.com/forestry-demo/image/upload/v1688483462/blog-media/supercharge-markdown-blog/Screenshot_2023-07-04_at_11.03.24_AM_bfqnld.png)
-
-## Table of Contents
-
-- [Example](#example)
-- [Usage](#usage)
-- [Implementing as a GitHub App](#github-app-usage)
-  - [Create a GitHub App](#create-a-github-app)
-  - [Hosting the App](#hosting-the-bot-backend)
-    - [Self-hosting on Netlify](#self-hosting-on-netlify)
-    - [Self-hosting on Render](#self-hosting-on-render)
-  - [ENV Variables](#env-variables)
-- [Implementing as a GitHub Action](#github-action-usage)
-  - [Add the GitHub Secret](#add-the-github-secret)
-  - [Add the GitHub Action to your repo](#add-the-github-action-to-your-repo)
-  - [Testing the GitHub Action](#testing-the-github-action)
-- [Contributing / Running Locally](#contributing---running-locally)
-- [Credit](#credit)
-- [Contributing](#contributing)
-- [License](#license)
-
-## Usage
-
-This bot can be used in two ways:
-
-1. As a GitHub App (self-hosted)
-2. As a GitHub Action
-
-A GitHub App can be hosted on any hosting platform that supports Node.js. It can also be hosted in a serverless environment such as AWS Lambda or Netlify Functions.
-
-> NOTE: Serverless functions sometimes have timeout limitations or stop after a request responds with a 202 status code (This is the behavior in Vercel). This may cause the bot to fail if the OpenAI API takes too long to respond.
-
-A GitHub Action is hosted by GitHub and will run on every comment to the repo, the action will only respond to comments on a PR and only if the comment follows the correct format.
-
-The bot responds to a comment in the format `ai fix: <filename>` or `ai fix: <file1>, <file2>`. A prompt can also be added by adding `prompt: <prompt>` after the filename to the comment.
+A prompt can also be added by adding `prompt: <prompt>` after the filename to the comment.
 
 For example:
 
@@ -53,7 +17,44 @@ prompt: Fix only the spelling and grammar errors in the README
 
 ![Example](http://res.cloudinary.com/forestry-demo/image/upload/v1688736596/blog-media/supercharge-markdown-blog/Screenshot_2023-07-07_at_8.41.32_AM_xsoswd.png)
 
-## GitHub App Usage
+## Example
+
+![Example](http://res.cloudinary.com/forestry-demo/image/upload/v1688483462/blog-media/supercharge-markdown-blog/Screenshot_2023-07-04_at_11.03.24_AM_bfqnld.png)
+
+## Table of Contents
+
+- [Example](#example)
+- [Usage](#usage)
+- [Implementing as a GitHub App](#github-app-implementation)
+  - [Create a GitHub App](#create-a-github-app)
+  - [Hosting the App](#hosting-the-bot-backend)
+    - [Self-hosting on Netlify](#self-hosting-on-netlify)
+    - [Self-hosting on Render](#self-hosting-on-render)
+  - [ENV Variables](#env-variables)
+- [Implementing as a GitHub Action](#github-action-implementation)
+  - [Add the GitHub Secret](#add-the-github-secret)
+  - [Add the GitHub Action to your repo](#add-the-github-action-to-your-repo)
+  - [Testing the GitHub Action](#testing-the-github-action)
+- [Contributing / Running Locally](#contributing---running-locally)
+- [Credit](#credit)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Implementation
+
+This bot can be implemented in two ways:
+
+1. As a GitHub App (self-hosted)
+2. As a GitHub Action
+
+A GitHub App can be hosted on any hosting platform that supports Node.js. It can also be hosted in a serverless environment such as AWS Lambda or Netlify Functions.
+
+> NOTE: Serverless functions sometimes have timeout limitations or stop after a request responds with a 202 status code (This is the behavior in Vercel). This may cause the bot to fail if the OpenAI API takes too long to respond.
+
+A GitHub Action is hosted by GitHub and will run on every comment to the repo, the action will only respond to comments on a PR and only if the comment follows the correct `ai fix ...` format.
+
+
+## GitHub App Implementation
 
 We do not provide a hosted version of the GitHub App so you will need to self-host it. You can self-host it on most hosting platforms. We have set up and tested it on Netlify (Functions) and Render.
 
@@ -119,7 +120,7 @@ WEBHOOK_SECRET=***
 
 See the [ProBot docs](https://probot.github.io/docs/configuration/) & [ProBot Configuration Guide](https://probot.github.io/docs/development/#manually-configuring-a-github-app) for more details.
 
-## GitHub Action Usage
+## GitHub Action Implementation
 
 When implementing this bot as a GitHub Action it will run on every comment to the repo, the bot will only respond to comments on a PR and only if the comment follows the format `ai fix: <filename>` or `ai fix: <file1>, <file2>`.
 
