@@ -48,7 +48,6 @@ A GitHub App can be hosted on any hosting platform that supports Node.js. It can
 
 A GitHub Action is hosted by GitHub and will run on every comment to the repo, the action will only respond to comments on a PR and only if the comment follows the correct `ai fix` format.
 
-
 ## GitHub App Implementation
 
 We do not provide a hosted version of the GitHub App so you will need to self-host it. You can self-host it on most hosting platforms. We have set up and tested it on Netlify (Functions) and Render.
@@ -115,9 +114,19 @@ WEBHOOK_SECRET=***
 
 See the [ProBot docs](https://probot.github.io/docs/configuration/) & [ProBot Configuration Guide](https://probot.github.io/docs/development/#manually-configuring-a-github-app) for more details.
 
+### Install the GitHub App
+
+Finally you can install the Github App on your repo. To do this:
+
+1. Go to the GitHub App settings
+2. Click on "Install App" Tab
+3. Click "Install" next to the account you want to install it on
+4. Select the repo(s) you want to install it on
+5. Click "Save"
+
 ## GitHub Action Implementation
 
-When implementing this bot as a GitHub Action it will run on every comment to the repo, the bot will only respond to comments on a PR and only if the comment follows the format `ai fix: <filename>` or `ai fix: <file1>, <file2>`.
+When implementing this bot as a GitHub Action it will run **on every comment to every pull request and issue on the entire repo**. This could be an issue if your repo has a significant amount of comments. The bot will only respond to comments on a PR and only if the comment follows the format `ai fix: <filename>` or `ai fix: <file1>, <file2>`.
 
 ### Add the GitHub Secret
 
