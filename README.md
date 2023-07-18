@@ -42,11 +42,11 @@ This bot can be implemented in two ways:
 1. As a GitHub App (self-hosted)
 2. As a GitHub Action
 
+The [Github Action implementation](#github-action-implementation) is **simpler** and **easier** to get started but it will require a **github action to run on every comment** to the repo. This could have a large impact your [github action minutes](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions) if your repo has a lot of comments. The [GitHub App implementation](#github-app-implementation) is more complex to setup. The Github App will run on a separate server and will not impact your github action minutes.
+
 A GitHub App can be hosted on any hosting platform that supports Node.js. It can also be hosted in a serverless environment such as AWS Lambda or Netlify Functions.
 
 > NOTE: Serverless functions sometimes have timeout limitations or stop after a request responds with a 202 status code (This is the behavior in Vercel). This may cause the bot to fail if the OpenAI API takes too long to respond.
-
-A GitHub Action is hosted by GitHub and will run on every comment to the repo, the action will only respond to comments on a PR and only if the comment follows the correct `ai fix` format.
 
 ## GitHub App Implementation
 
