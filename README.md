@@ -19,7 +19,7 @@ When a user comments `ai fix: <filename>` or `ai fix: <file1>, <file2>` the bot 
   - [Hosting the App](#hosting-the-bot-backend)
     - [Self-hosting on Netlify](#self-hosting-on-netlify)
     - [Self-hosting on Render](#self-hosting-on-render)
-- [ENV Variables](#env-variables)
+  - [ENV Variables](#env-variables)
 - [Implementing as a GitHub Action](#github-action-usage)
   - [Add the GitHub Secret](#add-the-github-secret)
   - [Add the GitHub Action to your repo](#add-the-github-action-to-your-repo)
@@ -95,7 +95,7 @@ This will clone the repo to your GitHub account and deploy it to Netlify. [See b
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/tinacms/ai-content)
 
-#### ENV Variables
+### ENV Variables
 
 When setting the bot backend on your hosting provider, you will need to set the following environment variables:
 
