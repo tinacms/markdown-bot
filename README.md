@@ -150,7 +150,8 @@ on:
   issue_comment:
     types: [created]
 jobs:
-  test:
+  make-suggestion:
+    name: "Make Suggestion"
     runs-on: ubuntu-latest
     steps:
       - uses: tinacms/ai-content@v0
