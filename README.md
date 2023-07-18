@@ -22,8 +22,8 @@ When a user comments `ai fix: <filename>` or `ai fix: <file1>, <file2>` the bot 
 - [ENV Variables](#env-variables)
 - [Implementing as a GitHub Action](#github-action-usage)
   - [Add the GitHub Secret](#add-the-github-secret)
-  - [Add The GitHub Action to your repo](#add-the-github-action-to-your-repo)
-  - [Start Using The Bot](#start-using-the-bot)
+  - [Add the GitHub Action to your repo](#add-the-github-action-to-your-repo)
+  - [Testing the GitHub Action](#testing-the-github-action)
 - [Contributing / Running Locally](#contributing---running-locally)
 - [Credit](#credit)
 - [Contributing](#contributing)
@@ -155,11 +155,11 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 ```
 
-### Start Using The Bot
+### Testing The GitHub Action
 
-The GitHub Action is set to run on every issue comment but it will only respond to comments on a PR and only if the comment follows the format `ai fix: <filename>` or `ai fix: <file1>, <file2>`.
+The GitHub Action will run on any comment to a PR/issue, but it will only respond to comments on a PR if the comment follows the format `ai fix: <filename>` or `ai fix: <file1>, <file2>`.
 
-To start using, on a PR comment `ai fix: <filename>`.
+To try it out: On a PR, comment `ai fix: <filename>`.
 
 ## Contributing / Running Locally
 
