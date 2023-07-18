@@ -23,7 +23,7 @@ When a user comments `ai fix: <filename>` or `ai fix: <file1>, <file2>` the bot 
 - [Implementing as a GitHub Action](#github-action-usage)
   - [Add the GitHub Secret](#add-the-github-secret)
   - [Add The GitHub Action to your repo](#add-the-github-action-to-your-repo)
-  - [Start Using](#start-using)
+  - [Start Using The Bot](#start-using-the-bot)
 - [Contributing / Running Locally](#contributing---running-locally)
 - [Credit](#credit)
 - [Contributing](#contributing)
