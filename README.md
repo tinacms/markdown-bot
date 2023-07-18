@@ -22,7 +22,7 @@ prompt: only return a signle suggestion
 - [Implementation Overview](#implementation-overview)
 - [Implementing as a GitHub App](#github-app-implementation)
   - [Create a GitHub App](#create-a-github-app)
-  - [Hosting the App](#hosting-the-bot-backend)
+  - [Hosting the Bot Backend](#hosting-the-bot-backend)
     - [Self-hosting on Netlify](#self-hosting-on-netlify)
     - [Self-hosting on Render](#self-hosting-on-render)
   - [ENV Variables](#env-variables)
