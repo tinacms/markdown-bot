@@ -11,11 +11,11 @@ A prompt can also be added by adding `prompt: <prompt>` after the filename to th
 For example:
 
 ```
-ai fix: README.md
-prompt: Fix only the spelling and grammar errors in the README
+ai fix: content/blog/Supercharge-Your-Markdown-Blog-With-AI.md
+prompt: only return a signle suggestion
 ```
 
-![Example](http://res.cloudinary.com/forestry-demo/image/upload/v1688483462/blog-media/supercharge-markdown-blog/Screenshot_2023-07-04_at_11.03.24_AM_bfqnld.png)
+![Example](http://res.cloudinary.com/forestry-demo/image/upload/v1688736596/blog-media/supercharge-markdown-blog/Screenshot_2023-07-07_at_8.41.32_AM_xsoswd.png)
 
 ## Table of Contents
 
@@ -47,7 +47,7 @@ A GitHub App can be hosted on any hosting platform that supports Node.js. It can
 
 > NOTE: Serverless functions sometimes have timeout limitations or stop after a request responds with a 202 status code (This is the behavior in Vercel). This may cause the bot to fail if the OpenAI API takes too long to respond.
 
-A GitHub Action is hosted by GitHub and will run on every comment to the repo, the action will only respond to comments on a PR and only if the comment follows the correct `ai fix ...` format.
+A GitHub Action is hosted by GitHub and will run on every comment to the repo, the action will only respond to comments on a PR and only if the comment follows the correct `ai fix` format.
 
 
 ## GitHub App Implementation
