@@ -15,10 +15,6 @@ ai fix: README.md
 prompt: Fix only the spelling and grammar errors in the README
 ```
 
-![Example](http://res.cloudinary.com/forestry-demo/image/upload/v1688736596/blog-media/supercharge-markdown-blog/Screenshot_2023-07-07_at_8.41.32_AM_xsoswd.png)
-
-## Example
-
 ![Example](http://res.cloudinary.com/forestry-demo/image/upload/v1688483462/blog-media/supercharge-markdown-blog/Screenshot_2023-07-04_at_11.03.24_AM_bfqnld.png)
 
 ## Table of Contents
