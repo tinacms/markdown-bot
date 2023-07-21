@@ -15,7 +15,7 @@ ai fix: content/blog/Supercharge-Your-Markdown-Blog-With-AI.md
 prompt: only return a signle suggestion
 ```
 
-![Example](https://res.cloudinary.com/forestry-demo/image/upload/v1689950653/Screenshot_2023-07-21_at_10.42.23_AM.png_)
+![Example](https://res.cloudinary.com/forestry-demo/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1689950653/Screenshot_2023-07-21_at_10.42.23_AM.jpg)
 
 ## Table of Contents
 
