@@ -1,4 +1,4 @@
-# Content Suggestion BOT
+# Markdown Bot: an AI friend who can improve your Markdown content
 
 > A content suggestion robot powered by ChatGPT
 
